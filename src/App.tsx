@@ -1,35 +1,26 @@
-import { useState } from "react";
-import { BrowserRouter } from "react-router-dom";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./App.css";
+import { GAME_CONTEXT } from "./core/context/game.context";
+import { useState } from "react";
+import { ROUTES } from "./core/constants/routes";
+import { GameDifficulty } from "./core/interfaces/game.interface";
+
+const router = createBrowserRouter([
+  {
+    children: Array.from(Object.values(ROUTES)),
+  },
+]);
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [playerName, setPlayerName] = useState("");
+  const [gameDifficulty, setGameDifficulty] = useState<GameDifficulty>();
 
   return (
-    <BrowserRouter>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </BrowserRouter>
+    <GAME_CONTEXT.Provider
+      value={{ playerName, setPlayerName, gameDifficulty, setGameDifficulty }}
+    >
+      <RouterProvider router={router} />
+    </GAME_CONTEXT.Provider>
   );
 }
 
