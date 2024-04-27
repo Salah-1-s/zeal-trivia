@@ -21,4 +21,14 @@ export const GAME_CONTEXT: React.Context<{
    * Sets game difficulty level
    */
   setGameDifficulty?: (level: GameDifficulty) => void;
+
+  /**
+   * All the previous categories the user selected
+   */
+  prevCategories?: number[];
+
+  /**
+   * Set the previous categories the user selected
+   */
+  setPrevCategories?: React.Dispatch<React.SetStateAction<number[]>>;
 }> = React.createContext({});

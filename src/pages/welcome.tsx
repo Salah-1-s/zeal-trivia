@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { GAME_CONTEXT } from "../core/context/game.context";
-import { GameDifficulty } from "../core/interfaces/game.interface";
 import { ROUTES } from "../core/constants/routes";
+import { GameDifficulty } from "../core/interfaces/game.interface";
 
 export default function WelcomePage() {
   const { playerName, setPlayerName, gameDifficulty, setGameDifficulty } =
