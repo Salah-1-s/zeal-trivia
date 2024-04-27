@@ -1,12 +1,11 @@
-import { useContext, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import * as echarts from "echarts";
-import { QUESTIONS_CONTEXT } from "../../context/questions.context";
 
-export default function BarChart() {
+interface PieChartProps {
+  data: { value: number; name: string }[];
+}
+export default function PieChart({ data }: PieChartProps) {
   const chartRef = useRef(null);
-
-  const { correctAnswers, falseAnswers, skippedQuestions } =
-    useContext(QUESTIONS_CONTEXT);
 
   useEffect(() => {
     const chart = echarts.init(chartRef.current);
@@ -22,14 +21,10 @@ export default function BarChart() {
       },
       series: [
         {
-          name: "Data",
+          name: "Score",
           type: "pie",
           radius: "50%",
-          data: [
-            { value: correctAnswers, name: "Correct Answers" },
-            { value: falseAnswers, name: "False Answers" },
-            { value: skippedQuestions, name: "Skipped Questions" },
-          ],
+          data,
           emphasis: {
             itemStyle: {
               shadowBlur: 10,

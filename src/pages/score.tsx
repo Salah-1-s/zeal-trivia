@@ -3,11 +3,12 @@ import LineGraph from "../core/components/charts/line";
 import { QUESTIONS_CONTEXT } from "../core/context/questions.context";
 import { GAME_CONTEXT } from "../core/context/game.context";
 import { convertSecondsToMinutes } from "../core/utils/common.utils";
-import BarChart from "../core/components/charts/bar";
+import PieChart from "../core/components/charts/pie";
 
 export default function ScorePage() {
   const { playerName } = useContext(GAME_CONTEXT);
-  const { questionsSummary } = useContext(QUESTIONS_CONTEXT);
+  const { questionsSummary, correctAnswers, falseAnswers, skippedQuestions } =
+    useContext(QUESTIONS_CONTEXT);
 
   let totalTimeToComplete = 0;
   questionsSummary?.forEach(
@@ -22,7 +23,22 @@ export default function ScorePage() {
         Total time to complete the game:{" "}
         {convertSecondsToMinutes(totalTimeToComplete)}
       </h3>
-      <BarChart />
+      <PieChart
+        data={[
+          {
+            name: "Correct Answers",
+            value: correctAnswers || 0,
+          },
+          {
+            name: "False Answers",
+            value: falseAnswers || 0,
+          },
+          {
+            name: "Skipped Questions",
+            value: skippedQuestions || 0,
+          },
+        ]}
+      />
 
       <h5>
         The following graph represents how much time you took in each question
