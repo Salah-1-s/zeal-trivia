@@ -26,3 +26,8 @@ export interface QuestionsResponse {
   response_code: 0 | 1 | 2 | 3 | 4;
   results: QuestionInterface[];
 }
+
+export interface QuestionSummaryInterface {
+  name: string;
+  time_to_complete: number;
+}

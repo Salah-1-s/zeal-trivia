@@ -1,4 +1,5 @@
 import React from "react";
+import { QuestionSummaryInterface } from "../interfaces/game.interface";
 
 export const QUESTIONS_CONTEXT: React.Context<{
   /**
@@ -30,4 +31,16 @@ export const QUESTIONS_CONTEXT: React.Context<{
    * Sets number of skipped questions
    */
   setSkippedQuestions?: React.Dispatch<React.SetStateAction<number>>;
+
+  /**
+   * Questions summary
+   */
+  questionsSummary?: QuestionSummaryInterface[];
+
+  /**
+   * Set questions summary
+   */
+  setQuestionsSummary?: React.Dispatch<
+    React.SetStateAction<QuestionSummaryInterface[]>
+  >;
 }> = React.createContext({});

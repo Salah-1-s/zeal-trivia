@@ -3,7 +3,10 @@ import "./App.css";
 import { GAME_CONTEXT } from "./core/context/game.context";
 import { useState } from "react";
 import { ROUTES } from "./core/constants/routes";
-import { GameDifficulty } from "./core/interfaces/game.interface";
+import {
+  GameDifficulty,
+  QuestionSummaryInterface,
+} from "./core/interfaces/game.interface";
 import { QUESTIONS_CONTEXT } from "./core/context/questions.context";
 
 const router = createBrowserRouter([
@@ -19,6 +22,9 @@ function App() {
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [falseAnswers, setFalseAnswers] = useState(0);
   const [skippedQuestions, setSkippedQuestions] = useState(0);
+  const [questionsSummary, setQuestionsSummary] = useState<
+    QuestionSummaryInterface[]
+  >([]);
 
   return (
     <GAME_CONTEXT.Provider
@@ -39,11 +45,10 @@ function App() {
           setFalseAnswers,
           skippedQuestions,
           setSkippedQuestions,
+          questionsSummary,
+          setQuestionsSummary,
         }}
       >
-        <p>{JSON.stringify(prevCategories, null, 2)}</p>
-        <p>{JSON.stringify(playerName, null, 2)}</p>
-        <p>{JSON.stringify(skippedQuestions, null, 2)}</p>
         <RouterProvider router={router} />
       </QUESTIONS_CONTEXT.Provider>
     </GAME_CONTEXT.Provider>

@@ -17,7 +17,8 @@ import {
 export default function QuestionsPage() {
   const { gameDifficulty, prevCategories, setPrevCategories } =
     useContext(GAME_CONTEXT);
-  const { setSkippedQuestions } = useContext(QUESTIONS_CONTEXT);
+  const { setSkippedQuestions, setQuestionsSummary } =
+    useContext(QUESTIONS_CONTEXT);
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showCompletion, setShowCompletion] = useState(false);
@@ -72,6 +73,15 @@ export default function QuestionsPage() {
     } else {
       setTimer(0);
     }
+
+    setQuestionsSummary &&
+      setQuestionsSummary((prev) => [
+        {
+          name: `C${(prevCategories?.length || 0) + 1} Q${currentQuestion + 1}`,
+          time_to_complete: calculateTimerHandler(gameDifficulty) - timer,
+        },
+        ...prev,
+      ]);
   };
 
   if (isFetching) {

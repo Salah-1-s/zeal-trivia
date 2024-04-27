@@ -12,6 +12,7 @@ export default function WelcomePage() {
 
   return (
     <section>
+      <h1>Welcome to Trivia Questions Game</h1>
       <fieldset>
         <legend>Please enter your name</legend>
         <input

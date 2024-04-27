@@ -1,5 +1,6 @@
 import CategoriesPage from "../../pages/categories";
 import QuestionsPage from "../../pages/questions";
+import ScorePage from "../../pages/score";
 import WelcomePage from "../../pages/welcome";
 
 export const ROUTES = {
@@ -17,7 +18,6 @@ export const ROUTES = {
   },
   scorePage: {
     path: "/score",
-    // Change this component after implementing the score page
-    Component: WelcomePage,
+    Component: ScorePage,
   },
 };
