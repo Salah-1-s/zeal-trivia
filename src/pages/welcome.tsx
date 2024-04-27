@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import PrimaryButton from "../core/components/button";
 import { GAME_CONTEXT } from "../core/context/game.context";
 import { ROUTES } from "../core/constants/routes";
 import { GameDifficulty } from "../core/interfaces/game.interface";
@@ -63,13 +64,13 @@ export default function WelcomePage() {
         </div>
       </fieldset>
 
-      <div>
-        <button
+      <div className="mt-16">
+        <PrimaryButton
           onClick={() => navigate(ROUTES.categoriesPage.path)}
           disabled={!(playerName || "").replaceAll(" ", "") || !gameDifficulty}
         >
           Play
-        </button>
+        </PrimaryButton>
       </div>
     </section>
   );

@@ -92,9 +92,10 @@ export default function QuestionsPage() {
     <section>
       {showCompletion && (
         <div>
+          <h2>Time for more!</h2>
           Congrats! You have completed all the questions in this category,{" "}
           <Link to={ROUTES.categoriesPage.path}>Click here</Link> to select
-          another one
+          another one.
         </div>
       )}
 

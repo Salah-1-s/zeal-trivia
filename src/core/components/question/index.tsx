@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import PrimaryButton from "../button";
 import { QUESTIONS_CONTEXT } from "../../context/questions.context";
 import { QuestionInterface } from "../../interfaces/game.interface";
 
@@ -18,6 +19,7 @@ export default function Question({ question, resetTimer }: QuestionProps) {
     questionsContext?.setSkippedQuestions &&
       questionsContext?.setSkippedQuestions((prev) => prev + 1);
 
+    setSelectedAnswer(undefined);
     resetTimer();
   };
 
@@ -30,6 +32,7 @@ export default function Question({ question, resetTimer }: QuestionProps) {
         questionsContext?.setFalseAnswers((prev) => prev + 1);
     }
 
+    setSelectedAnswer(undefined);
     resetTimer();
   };
 
@@ -37,16 +40,20 @@ export default function Question({ question, resetTimer }: QuestionProps) {
     <div>
       <h4>{question.question}</h4>
       {answersArray?.map((a, i) => (
-        <button key={i} onClick={() => setSelectedAnswer(a)}>
+        <button
+          key={i}
+          onClick={() => setSelectedAnswer(a)}
+          className={selectedAnswer === a ? "tab--active" : ""}
+        >
           {a}
         </button>
       ))}
 
-      <div>
+      <div className="mt-16">
         <button onClick={skipHandler}>Skip</button>
-        <button disabled={!selectedAnswer} onClick={submitHandler}>
+        <PrimaryButton disabled={!selectedAnswer} onClick={submitHandler}>
           Next
-        </button>
+        </PrimaryButton>
       </div>
     </div>
   );
