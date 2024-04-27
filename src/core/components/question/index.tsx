@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import PrimaryButton from "../button";
-import { QUESTIONS_CONTEXT } from "../../context/questions.context";
+import { QUESTIONS_CONTEXT } from "../../providers/questions.context";
 import { QuestionInterface } from "../../interfaces/game.interface";
 
 interface QuestionProps {

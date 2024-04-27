@@ -1,13 +1,13 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./App.css";
-import { GAME_CONTEXT } from "./core/context/game.context";
+import { GAME_CONTEXT } from "./core/providers/game.context";
 import { useState } from "react";
 import { ROUTES } from "./core/constants/routes";
 import {
   GameDifficulty,
   QuestionSummaryInterface,
 } from "./core/interfaces/game.interface";
-import { QUESTIONS_CONTEXT } from "./core/context/questions.context";
+import { QUESTIONS_CONTEXT } from "./core/providers/questions.context";
 
 const router = createBrowserRouter([
   {

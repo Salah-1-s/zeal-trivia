@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PrimaryButton from "../core/components/button";
-import { GAME_CONTEXT } from "../core/context/game.context";
+import { GAME_CONTEXT } from "../core/providers/game.context";
 import { useGetCategoriesQuery } from "../core/utils/game.utils";
 import { ROUTES } from "../core/constants/routes";
 

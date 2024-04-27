@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import LineGraph from "../core/components/charts/line";
-import { QUESTIONS_CONTEXT } from "../core/context/questions.context";
-import { GAME_CONTEXT } from "../core/context/game.context";
+import { QUESTIONS_CONTEXT } from "../core/providers/questions.context";
+import { GAME_CONTEXT } from "../core/providers/game.context";
 import { convertSecondsToMinutes } from "../core/utils/common.utils";
 import PieChart from "../core/components/charts/pie";
 

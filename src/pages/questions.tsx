@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { QUESTIONS_CONTEXT } from "../core/context/questions.context";
-import { GAME_CONTEXT } from "../core/context/game.context";
+import { QUESTIONS_CONTEXT } from "../core/providers/questions.context";
+import { GAME_CONTEXT } from "../core/providers/game.context";
 import Question from "../core/components/question";
 import {
   calculateTimerHandler,
