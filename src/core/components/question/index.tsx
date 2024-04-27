@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import PrimaryButton from "../button";
 import { QUESTIONS_CONTEXT } from "../../providers/questions.context";
 import { QuestionInterface } from "../../interfaces/game.interface";
@@ -10,10 +10,9 @@ interface QuestionProps {
 
 export default function Question({ question, resetTimer }: QuestionProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<string>();
+  const [answersArray, setAnswersArray] = useState<string[]>([]);
 
   const questionsContext = useContext(QUESTIONS_CONTEXT);
-
-  const answersArray = [question.correct_answer, ...question.incorrect_answers];
 
   const skipHandler = () => {
     questionsContext?.setSkippedQuestions &&
@@ -35,6 +34,14 @@ export default function Question({ question, resetTimer }: QuestionProps) {
     setSelectedAnswer(undefined);
     resetTimer();
   };
+
+  useEffect(() => {
+    setAnswersArray(
+      [question.correct_answer, ...question.incorrect_answers].sort(
+        () => 0.5 - Math.random()
+      )
+    );
+  }, [question]);
 
   return (
     <div>
